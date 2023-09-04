@@ -87,7 +87,6 @@ public class MLOG {
     public static final String ShiftRightOperation = "shr";//too
     public static final String DivOperation = "div";
     public static final String ModOpertion = "mod";
-    
     public static final String GreaterEqualSuffix = "greaterThanEq";
     public static final String GreaterSuffix = "greaterThan";
     public static final String LessEqualSuffix = "lessThanEq";
@@ -103,7 +102,6 @@ public class MLOG {
     public static final String GreaterThanEqOperation = "greaterThanEq";
     public static final String EqualOperation = "equal";
     public static final String NotEqualOperation = "notEqual";
-    
     public static final String GPRegPrefix = "gp";
     public static final String MainFunctionIdentifier = "main";
 
@@ -119,20 +117,20 @@ public class MLOG {
                 .setCode("IPCall0:\n" +
                         "write 0 bank2 510\n" +
                         "write 0 bank2 509\n" +
-                        "write a0 bank2 511\n" +
+                        "write a1 bank2 511\n" +
                         "IPCall5:\n" +
-                        "read a0 bank2 510\n" +
-                        "jump IPCall5 lessThanEq a0 0\n" +
+                        "read a1 bank2 510\n" +
+                        "jump IPCall5 lessThanEq a1 0\n" +
                         "write 0 bank2 511\n" +
-                        "write a0 bank2 509\n" +
+                        "write a1 bank2 509\n" +
                         "write 0 bank2 508\n" +
                         "IPCall10:\n" +
-                        "read a0 bank2 508\n" +
-                        "jump IPCall10 equal a0 0\n" +
-                        "jump IPCall16 greaterThan a0 0\n" +
+                        "read a1 bank2 508\n" +
+                        "jump IPCall10 equal a1 0\n" +
+                        "jump IPCall16 greaterThan a1 0\n" +
                         "read b0 bank2 507\n" +
                         "write IPCall_head bank2 508\n" +
-                        "set a0 IPCall_head\n" +
+                        "set a1 IPCall_head\n" +
                         "op add IPCall_head IPCall_head b0\n" +
                         "IPCall16:\n" +
                         "set @counter ra")
@@ -140,7 +138,7 @@ public class MLOG {
         );
         ASMBuildinFunction.BuildinFunctions.add(new ASMBuildinFunction("IPAccept")
                 .setCode("IPAccept0:\n" +
-                        "set IPAccept_id a0\n" +
+                        "set IPAccept_id a1\n" +
                         "set IPAccept_space 3\n" +
                         "op mul IPAccept_code @thisx @maph\n" +
                         "op add IPAccept_code IPAccept_code @thisy\n" +
