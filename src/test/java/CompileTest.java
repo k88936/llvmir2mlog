@@ -11,32 +11,28 @@ public class CompileTest {
         var file = "src/test/resources/test.ll";
         test(file);
     }
+
     @org.junit.jupiter.api.BeforeAll
-public static void setUpClass() throws Exception {
-try {
-PrintStream out = new PrintStream(new FileOutputStream("output.txt",true));
-System.setOut(out);
-} catch (IOException e) {
-e.printStackTrace();
-}
-}
+    public static void setUpClass() throws Exception {
+        try {
+            PrintStream out = new PrintStream(new FileOutputStream("output.txt", true));
+            System.setOut(out);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     static void test(String file) {
-    	
-    System.out.println("#\n#\n#\n#\n#\n#------"+file+"\n#\n#\n#\n#\n#\n#");
-    
-	try {
+
+        System.out.println("#\n#\n#\n#\n#\n#------" + file + "\n#\n#\n#\n#\n#\n#");
+
+        try {
             llvm2mlog.compile(new FileInputStream(file), System.out);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
 
-    
     }
-
-    
- 
-
 
     @org.junit.jupiter.api.Test
     void testBuildinFUnction() {
@@ -50,5 +46,5 @@ e.printStackTrace();
         test(file);
 
     }
-    
+
 }
